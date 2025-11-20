@@ -5,20 +5,29 @@ from .models import Warga, Pengaduan
 from .forms import WargaForm, PengaduanForm
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from .serializers import WargaSerializer, PengaduanSerializer
+from rest_framework import viewsets
 
 
-# --- API VIEWS ---
-class WargaListAPIView(ListAPIView):
-    queryset = Warga.objects.all()
+class WargaViewSet(viewsets.ModelViewSet):
+    queryset = Warga.objects.all().order_by('-tanggal_registrasi')
     serializer_class = WargaSerializer
 
-class WargaDetailAPIView(RetrieveAPIView):
-    queryset = Warga.objects.all()
-    serializer_class = WargaSerializer
-
-class PengaduanListAPIView(ListAPIView):
+class PengaduanViewSet(viewsets.ModelViewSet):
     queryset = Pengaduan.objects.all()
     serializer_class = PengaduanSerializer
+
+# --- API VIEWS ---
+# class WargaListAPIView(ListAPIView):
+#     queryset = Warga.objects.all()
+#     serializer_class = WargaSerializer
+
+# class WargaDetailAPIView(RetrieveAPIView):
+#     queryset = Warga.objects.all()
+#     serializer_class = WargaSerializer
+
+# class PengaduanListAPIView(ListAPIView):
+#     queryset = Pengaduan.objects.all()
+#     serializer_class = PengaduanSerializer
 
 class WargaListView(ListView):
     model = Warga
