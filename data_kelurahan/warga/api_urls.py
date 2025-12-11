@@ -7,7 +7,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register(r'warga', WargaViewSet, basename='warga')
-router.register(r'aduan', PengaduanViewSet, basename='aduan')
+router.register(r'pengaduan', PengaduanViewSet, basename='aduan')
 
 
 
