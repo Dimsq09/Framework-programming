@@ -13,7 +13,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 class WargaViewSet(viewsets.ModelViewSet):
      queryset = Warga.objects.all().order_by('-tanggal_registrasi')
      serializer_class = WargaSerializer
-     permissions_classes = [IsAuthenticatedOrReadOnly]
+     permission_classes = [AllowAny]
      filter_backends = [SearchFilter, OrderingFilter]
      search_fields = ['nama_lengkap', 'nik', 'alamat']
      ordering_fields = ['nama_lengkap', 'tanggal_registrasi']
@@ -22,7 +22,7 @@ class WargaViewSet(viewsets.ModelViewSet):
 class PengaduanViewSet(viewsets.ModelViewSet):
      queryset = Pengaduan.objects.all()
      serializer_class = PengaduanSerializer
-     permissions_classes = [IsAuthenticatedOrReadOnly]
+     permission_classes = [IsAuthenticatedOrReadOnly]
      filter_backends = [SearchFilter, OrderingFilter]
      search_fields = ['judul', 'deskripsi', 'status','pelapor']
      ordering_fields = ['judul', 'deskripsi', 'status','pelapor']
