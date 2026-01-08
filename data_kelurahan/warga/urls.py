@@ -11,6 +11,7 @@ from .views import (
     PengaduanDeleteView,
 )
 
+
 app_name = 'warga'  
 
 urlpatterns = [
